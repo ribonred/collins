@@ -1,0 +1,178 @@
+{% load static %}
+<section class="chose_video_area">
+    <div class="chose_left_text">
+        <div class="chose_text_inner">
+            <div class="main_b_title">
+                <h2>Why <br class="title_br"> Choose Us?</h2>
+                <h6>Play Welcome Video</h6>
+            </div>
+            <p>Kami menghadirkan Hunian mewah, lokasi yang strategis dengan harga terjangkau di kota Malang. Kami juga memberikan info property yang strategis dan bernilai investasi tinggi untuk di tinjau di kota Malang</p>
+            <ul>
+                <li><a href="#"><i class="fa fa-check" aria-hidden="true"></i>Kreatif</a></li>
+                <li><a href="#"><i class="fa fa-check" aria-hidden="true"></i>Kepuasan dan Kenyamanan anda prioritas kami</a></li>
+                <li><a href="#"><i class="fa fa-check" aria-hidden="true"></i>Quality Commitment</a></li>
+                <li><a href="#"><i class="fa fa-check" aria-hidden="true"></i>Selalu berinovasi dan berkarya</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="chose_video_right">
+        <div class="chose_video_inner">
+            <img src="{% static "img/TAMPAK 54 atau 50.jpeg" %}" alt="">
+        </div>
+    </div>
+</section>
+<style>
+    .swiper-container {
+      width: 100%;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    .swiper-slide {
+      background-position: center;
+      background-size: 100% 100%;
+      width: 600px;
+      height: 600px;
+    }
+    @media only screen and (max-width: 769px) {
+      .swiper-slide {
+        width: 300px;
+        height: 300px;
+      }
+      .chose_video_area
+      {
+        min-width:400px;
+      }
+      .secondary{
+        min-width: 400px;
+      }
+    }
+</style>
+
+<!-- promo -->
+<div class="promo-container" style="padding-bottom:100px;background:#1e2126;min-width:400px">
+  
+    
+ 
+  <div class="promo">
+      <div class="container">
+        <section class="tips tips-bg">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-7 mb-4 mb-lg-0">
+                <h2 class="section-intro__subtitle">Our Promo</h2>
+                <p>COLLINS PROMO</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="swiper-container">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+              <!-- Slides -->
+              
+              {% for a in prom  %}
+              <div class="swiper-slide">
+                  <a href="{{a.link}}"> <img src="{{a.Image_promo.url}}" alt="" srcset=""></a>
+                </div>
+              {% endfor %}
+                
+          </div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+      
+  
+      </div>
+  </div>
+</div>
+
+
+
+    <!-- ##### Hero Area End ##### -->
+<!-- endpromo -->
+
+
+<!--================Our Project Area =================-->
+<section class="section-t4 secondary"style="background-image:url({%static 'img/hero-3.png' %}); margin-top:0px; padding-bottom:150px;background-size: cover;">
+<div class="container">
+  <section class="tips tips-bg">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-7 mb-4 mb-lg-0">
+					<h2 class="section-intro__subtitle">Our Project</h2>
+					<p>Find your property with Us</p>
+				</div>
+			</div>
+		</div>
+	</section>
+  <div class="row" style="height: 100%;">
+    <div class="col-md-6">
+      <div class="hero__slideContent text-center">
+        <h1>Our Project</h1>
+        <p class="text-white">Tersedia untuk anda property mewah dengan lokasi yang strategis dan harga yang terjangkau di Area kota malang</p>
+        <a class="btn btn--leftBorder btn--rightBorder text-white" href="{% url 'list category primary' %}">Details</a>
+        <span class="hero__slideContent--right"></span>
+      </div> 
+    </div>
+    <div class="col-md-6">
+      <div class="hero__slideContent text-center">
+        <h1>Secondary Project</h1>
+        <p class="text-white">temukan hunian nyaman property pilihan terbaik kami dan bernilai investasi di kota malang. </p>
+        <a class="btn btn--leftBorder btn--rightBorder text-white" href="{% url 'list category second' %}">Details</a>
+        <span class="hero__slideContent--right"></span>
+      </div>
+    </div>
+  </div>
+  </div> 
+</section>
+<div align="center">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- horizontal ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3126995655051051"
+     data-ad-slot="5477027509"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<!-- ##### Hero Area Start ##### -->
+<section class="news" style="padding-top:200px;">
+  <div class="container">
+    <div class="row justify-content-center mb-5 pb-3">
+      <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
+        <span class="subheading">Read Articles</span>
+        <h2>Our Blog</h2>
+      </div>
+    </div>
+    <div class="row d-flex">
+      {% for artikel in article %}
+      <div class="col-md-3 d-flex ftco-animate fadeInUp ftco-animated">
+          <div class="blog-entry align-self-stretch">
+            <a href="artikelpengembangan/detail/{{artikel.slug}}" class="block-20" style="background-image: url('{{artikel.thumbnail.url}}');">
+            </a>
+            <div class="text mt-3 d-block">
+              <h3 class="heading mt-3"><a href="artikelpengembangan/detail/{{artikel.slug}}">{{artikel.judul}}</a></h3>
+              <div class="meta mb-3">
+                <div><a href="artikelpengembangan/detail/{{artikel.slug}}">{{artikel.published}}</a></div>
+                <div><a href="#">{{artikel.author.username}}</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+      </section>
+      <!-- ##### Hero Area End ##### -->
+
+  <!--================End Our Project Area =================-->  
+
+ 
+      
+ 
+
+

@@ -1,0 +1,4 @@
+deployment:
+ tasks:
+ - export DEPLOYPATH=/home/collinsp/proper
+ - /bin/rsync -Paz * $DEPLOYPATH --delete

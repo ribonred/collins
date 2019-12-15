@@ -1,0 +1,56 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html> 
+<html lang="en">
+<head> 
+    {% include 'snippets/bootstrap.html' %}
+</head>
+
+<body> 
+  <!--/ Nav Star /-->
+ {% include "snippets/navbar/navbarproject.html" %} 
+  <!--/ Nav End /-->
+ 
+{% if user.is_authenticated %}
+
+<div class="container-fluid" style="margin:200px 500px ;"><h1>{{user.username}} Anda sudah login</h1></div>
+
+{% else %}
+
+    <form method="POST" enctype="multipart/form-data" style="padding-top:150px; margin-left:50px;">
+            {%csrf_token%}
+            {% for field in form %}
+            <div class="form-group{% if field.errors %} has-error{% endif %}">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {% render_field field class="form-control" %}
+              {% for error in field.errors %}
+                <p class="help-block">{{ error }}</p>
+              {% endfor %}
+          {% endfor %}</div>
+            <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+        </form>
+
+{% endif %}
+
+  
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+  {% endfor %}
+
+{% endif %}
+  <!--/ footer Star /-->
+ {% include "snippets/footer.html" %} 
+  <!--/ Footer End /-->
+
+  
+{% include "snippets/script.html" %} 
+
+</body>
+</html>

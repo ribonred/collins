@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'snippets/bootstrap.html' %}
+</head>
+
+<body>
+
+
+
+  <!--/ Nav Star /-->
+  {% include "snippets/navbar/navbarproject.html" %} 
+ <!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">Our Amazing Properties</h1>
+            <span class="color-text-a">Grid Properties</span>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="#">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Properties Grid
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+
+  <!--/ Property Grid Star /-->
+  <section class="property-grid grid">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="grid-option">
+            <form action="." method="GET">
+                <select class="custom-select" onchange="location = this.value;">
+                    <option value="/product/primary">Primary</option>
+                    <option value="/product">Semua</option>
+                    <option value="/product/second">Secondary</option>
+                   </select>
+            </form>
+          </div>
+        </div>
+       
+      
+        {% for produk in categorylist  %}
+      
+        
+        <!-- Single Property Area -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="single-property-area wow fadeInUp" data-wow-delay="200ms">
+              <!-- Property Thumb -->
+              <div class="{% if produk.terjual == True%} property-thumb {% endif %} ">
+                  <a href="/product/detail/{{produk.slug}}"><img src="{{produk.foto_utama.url}}" alt="" ></a>
+              </div>
+
+              <!-- Property Description -->
+              <div class="property-desc-area">
+                  <!-- Property Title & Seller -->
+                  <div class="property-title-seller d-flex justify-content-between">
+                      <!-- Title -->
+                      <div class="property-title">
+                          <a href="/product/detail/{{produk.slug}}"><h4>{{produk.nama}}</h4></a>
+                          <p><i class="fa fa-map-marker" aria-hidden="true"></i>{{produk.alamat}}</p>
+                      </div>
+                      <!-- Seller -->
+                      <div class="property-seller">
+                          <p>Agent:</p>
+                          <h6>{{produk.agent.username}}</h6>
+                      </div>
+                  </div>
+                  <!-- Property Info -->
+                  <div class="property-info-area d-flex flex-wrap">
+                      <p>Luas: <span>{{produk.luas}} m2</span></p>
+                      <p>Carport: <span>{{produk.garasi}}</span></p>
+                      <p>K Mandi: <span>{{produk.k_mandi}}</span></p>
+                      <p>K Tidur: <span>{{produk.k_tidur}}</span></p>
+                  </div>
+              </div>
+
+              <!-- Property Price -->
+              <div class="property-price">
+                  <p class="badge-rent">{{produk.status}}</p>
+                  <p class="price"> <a href="/product/detail/{{produk.slug}}">{% if produk.Category.name == 'secondary' %}
+                    Rp
+                    {% else %}
+                    Dp
+                  {% endif %}  {{produk.harga|floatformat:-1}}{{produk.Nominals}}</p></a>
+              </div>
+          </div>
+      </div>{% endfor %}
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          {% if is_paginated %}
+          <nav class="pagination-a">
+            <ul class="pagination justify-content-end">
+              {% if page_obj.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{page_obj.previous_page_number}}" tabindex="-1">
+                  <span class="ion-ios-arrow-back"> PREV</span>
+                </a>
+              </li>
+              {% else %}
+              <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1">
+                    <span class="ion-ios-arrow-back"> PREV</span>
+                  </a>
+                </li>
+              {% endif %}
+              
+              {% for i in paginator.page_range  %}
+              {% if i is page_obj.number %}
+              <li class="page-item active ">
+                  <a class="page-link" href="?page={{i}}">{{i}}</a>
+                </li>
+                {% else %}
+              <li class="page-item">
+                  <a class="page-link" href="?page={{i}}">{{i}}</a>
+                </li>
+              {% endif %}
+              
+              {% endfor %}
+              {% if page_obj.has_next %}
+              <li class="page-item next">
+                <a class="page-link" href="?page={{page_obj.next_page_number}}">
+                  <span class="ion-ios-arrow-forward">NEXT</span>
+                </a>
+              </li>
+              {% else %}
+              <li class="page-item next disabled">
+                  <a class="page-link" href="#">
+                    <span class="ion-ios-arrow-forward">NEXT</span>
+                  </a>
+                </li>            
+              {% endif %}
+            </ul>
+          </nav>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Property Grid End /-->
+
+  {% include "snippets/footer.html" %}
+  <!--/ Footer End /-->
+
+  
+
+  {% include "snippets/script.html" %}
+
+</body>
+</html>

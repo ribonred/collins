@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en">
+<head> 
+    {% include 'snippets/bootstrap.html' %}
+</head>
+
+<body> 
+  <!--/ Nav Star /-->
+ {% include "snippets/navbar/navbarproject.html" %} 
+  <!--/ Nav End /-->
+  <div id="login">        
+ <h3 class="text-center text-white pt-5">Login form</h3>
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                    
+                <div id="login-box" class="col-md-12">
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>{{ message }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endif %}
+                        
+                          {% endfor %}
+                        
+                        {% endif %}
+                    <form id="login-form" class="form" action="." method="post">{% csrf_token %}
+                        <h3 class="text-center text-info">Login</h3>
+                        <div class="form-group">
+                            <label for="username" class="text-info">Username:</label><br>
+                            <input type="text" name="username" id="username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="text-info">Password:</label><br>
+                            <input type="password" name="password" id="password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                            <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!--/ footer Star /-->
+ {% include "snippets/footer.html" %} 
+  <!--/ Footer End /-->
+
+  
+{% include "snippets/script.html" %} 
+
+
+</body>
+</html>

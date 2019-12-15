@@ -1,0 +1,50 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<div class="container">
+        <div class="col-md-12">
+                <div class="row section-t3">
+                  <div class="col-sm-12">
+                    <div class="title-box-d">
+                      <h3 class="title-d">Profile</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 col-lg-4">
+                    <img src={{profile.foto_profile.url}} alt="" class="img-fluid">
+                  </div>
+                  <div class="col-md-6 col-lg-4">
+                    <div class="property-agent">
+                      <h4 class="title-agent">{{profile.user.username}}</h4>
+                      <ul class="list-unstyled">
+                        <li class="d-flex justify-content-between">
+                          <strong>Phone:</strong>
+                          <span class="color-text-a">{{profile.no_tlp}}</span>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                          <strong>Email:</strong>
+                          <span class="color-text-a">{{profile.user.email}}</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="#profedit" data-href="{% url 'editprof' profile.id %}" class="editprof btn btn-primary btn-sm active" role="button" aria-pressed="true" data-toggle="modal">UPDATE</a>
+</div>
+<div id="profedit" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $('.editprof').click(function(e) {
+            e.preventDefault();
+            var url = $(this).attr('data-href');
+            $('.modal-content').load(url);
+          });
+        });
+      </script>

@@ -1,0 +1,68 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include "snippets/bootstrap.html" %}
+{{form.media}}
+</head>
+
+<body>
+  {% include 'snippets/navbar/navbarproject.html' %}
+  <!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">ADD ARTIKEL</h1>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                About
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+
+  <!--/ About Star /-->
+  <section class="section-about">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 section-t8">
+                <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="float-right">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <a href="{% url 'adminlist' %}" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Cancel</a>
+                        </div>
+                       
+                    </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  <!--/ About End /-->
+  
+
+  <!--/ footer Star /-->
+ {% include "snippets/footer.html" %}
+  <!--/ Footer End /-->
+  <!-- JavaScript Libraries -->
+  {% include 'snippets/script.html' %}
+
+</body>
+</html>

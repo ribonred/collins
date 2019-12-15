@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, minimum-scale=1">
+    {% include 'snippets/bootstrap.html' %}
+</head>
+
+<body style="overflow-x:hidden;">
+    
+  <!--/ Nav Star /-->
+ {% include "snippets/navbar/navbarproject.html" %} 
+
+  <!--/ Nav End /-->
+  {% include "snippets/homeslide.html" %} 
+
+{% include "snippets/project.html" %} 
+  <!--/ footer Star /-->
+  
+ {% include "snippets/footer.html" %} 
+  <!--/ Footer End /-->
+  <div class="modal show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Collins Property</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+           <strong>welcome {{user.username}}</strong>       
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <a type="button" class="btn btn-primary" href="{% url 'adminlist' %}">TO ADMIN PANEL</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% include "snippets/script.html" %} 
+
+</body>
+</html>

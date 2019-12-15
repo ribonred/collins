@@ -1,0 +1,45 @@
+{% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+  .carousel-inner{
+    padding-top: 150px;
+    padding-bottom: 50px;
+  }
+#pentulan {
+
+  background-color: yellow;
+  height: 10px;
+
+}
+</style>  
+<div class="bd-example">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" >
+      <ol class="carousel-indicators">
+        
+        {% for c in prom  %}
+        <li data-target="#carouselExampleCaptions" data-slide-to="{{c.Nama_promo}}" class="{% if forloop.first %} active {%endif%}" id="pentulan"></li>
+        {% endfor %}
+          
+        
+      </ol>
+      <div class="carousel-inner">
+        
+        {% for foto in prom  %}
+        <div class="carousel-item  {% if forloop.first %} active {%endif%}" >
+            <img src="{{foto.Image_promo.url}}" class="d-lock w-100" alt="...">
+          </div>
+        {% endfor %}
+          
+        <div class="overlay overlay-a"></div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+

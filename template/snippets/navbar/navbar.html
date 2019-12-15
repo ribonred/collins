@@ -1,0 +1,46 @@
+{% load static %}
+<nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+            aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          
+          <img class="navbar-brand" href="#" src={% static "img/logo.png" %}></img>
+          <a class="navbar-brand text-brand" href="/"><span class="color-b">Collins Property</span></a>
+          <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+              <form class="form-inline md-form mr-auto mb-4" method="GET" style="margin-top: 30px;" action="{% url 'kontrak' %}"> 
+                  <input class="form-control mr-sm-2" name="q" type="text" placeholder="Input ID anda" aria-label="Search">
+                  <button class="btn btn-outline-warning btn-rounded btn-sm my-0" type="submit">Track Progress</button>
+                </form>
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link {% if request.resolver_match.url_name == 'list product' %}active{% endif %}" href="/product">Selling</a>
+                </li>
+              <li class="nav-item">
+                  <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="/contact">Contact</a>
+              </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item dropdown">
+                  <a class="nav-link nav-link dropdown-toggle {% if request.resolver_match.url_name == 'login' %}active{% endif %}" href="/acount" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">{{user.username}}</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="{% url 'logout' %}">logout</a>
+                      <a class="dropdown-item" href="{% url 'adminlist' %}">Admin</a>
+                    </div>
+                </li>
+                {% else %}
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'login' %}active{% endif %}" href="/acount">Login</a>
+              </li>
+              {%endif%}
+              
+            </ul>
+          </div>
+        </div>
+      </nav>

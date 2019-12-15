@@ -1,0 +1,114 @@
+<div class="container-fluid" style="padding-top: 20px;">
+  <p>
+      <button type="button" class="btn btn-primary js-create-book" style="float: left; margin-bottom: 20px;">
+        <span class="glyphicon glyphicon-plus"></span>
+        New customer
+      </button>
+    </p>  
+    <table class="table" id="book-table">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Nama</th>
+            <th scope="col">No id</th>
+            <th scope="col">No Tlp</th>
+            <th scope="col">Alamat</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% include 'cs/partcslist.html' %}
+        </tbody>
+      </table>
+  <div class="modal fade" id="modal-cs">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+      </div>
+</div>
+
+
+
+
+<script>
+$(function () {
+
+$(".js-create-book").click(function () {
+  $.ajax({
+    url: 'customer/create',
+    type: 'get',
+    dataType: 'json',
+    beforeSend: function (data) {
+      $("#modal-cs").modal("show");
+    },
+    success: function (data) {
+      $("#modal-cs .modal-content").html(data.html_form);
+    }
+  });
+});
+
+});</script>
+  <script>
+      $(function () {
+
+/* Functions */
+var loadForm = function () {
+  var btn = $(this);
+  $.ajax({
+    url: btn.attr("data-url"),
+    type: 'get',
+    dataType: 'json',
+    beforeSend: function () {
+      $("#modal-cs").modal("show");
+    },
+    success: function (data) {
+      $("#modal-cs .modal-content").html(data.html_form);
+    }
+  });
+};
+
+var saveForm = function () {
+  var form = $(this);
+  $.ajax({
+    url: form.attr("action"),
+    data: form.serialize(),
+    type: form.attr("method"),
+    dataType: 'json',
+    success: function (data) {
+      if (data.form_is_valid) {        
+        $("#book-table tbody").html(data.html_book_list);
+        $("#modal-cs").trigger("click");
+        
+        
+        
+        
+      }
+      else {
+        $("#modal-cs .modal-content").html(data.html_form);
+         $(".modal").modal("hide");
+      }
+    }
+  });
+  return false;
+};
+
+
+/* Binding */
+
+// Create book
+$(".js-create-book").click(loadForm);
+$("#modal-cs").on("submit", ".js-create-form", saveForm);
+
+// Update book
+$("#book-table").on("click", ".js-update-book", loadForm);
+$("#modal-cs").on("submit", ".js-book-update-form", saveForm);
+
+$("#book-table").on("click", ".js-delete-book", loadForm);
+$("#modal-cs").on("submit", ".js-book-delete-form", saveForm);
+
+});
+    </script>
+</div>
+
+    

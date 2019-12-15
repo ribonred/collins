@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+    {% include 'snippets/bootstrap.html' %}
+</head>
+
+<body style="overflow-x:hidden;">
+ 
+  <!--/ Nav Star /-->
+
+  <!--/ Nav End /-->
+{% block content %}
+  
+{% endblock content %} 
+  <!--/ footer Star /-->
+
+  <!--/ Footer End /-->
+
+  
+{% include "snippets/script.html" %}
+<script src="{% static 'js/formset/jquery.formset.js' %}"></script>
+<script type="text/javascript">
+    $('.formset_row').formset({
+        addText: 'Tambah Angsuran',
+        deleteText: 'remove',
+        prefix: 'titles_set'
+    });
+</script>
+<script type="text/javascript">
+  $('.formset_proses').formset({
+      addText: 'Tambah Foto',
+      deleteText: 'remove',
+      prefix: 'titles_set'
+  });
+</script> 
+
+</body>
+</html>

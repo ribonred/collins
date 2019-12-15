@@ -1,0 +1,271 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ {% include "snippets/bootstrap.html" %}
+ <meta property="og:title" content="{{property.nama}}">
+<meta property="og:site_name" content="www.collins-property.com">
+<meta property="og:url" content="{{request.build_absolute_uri}}">
+<meta property="og:description" content="{{property.nama}}-{{property.alamat}}||{{property.harga}}{{property.Nominals}}">
+<meta property="og:type" content="product">
+<meta property="og:image" content="http://collins-property.com{{property.foto_utama.url}}">
+<meta name="fb:app_id" content="399292814048927">
+</head>
+
+<body>
+
+
+  <div class="click-closed"></div>
+  <!--/ Nav Star /-->
+ {% include "snippets/navbar/navbarproject.html" %}
+  <!--/ Nav End /-->
+
+  <!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">{{property.nama}}</h1>
+            <span class="color-text-a">{{property.alamat}}</span>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="/product">Properties</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                {{property.nama}}
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+
+  <!--/ Property Single Star /-->
+  <section class="property-single nav-arrow-b">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+            <div class="carousel-item-b">
+              <img src={{property.foto_utama.url}} alt="">
+            </div>
+          </div>
+          <div class="row justify-content-between">
+            <div class="col-md-5 col-lg-4">
+              <div class="property-price d-flex justify-content-center foo">
+                <div class="card-header-c d-flex">
+                  <div class="card-box-ico">
+                    <span class="ion-money">Rp</span>
+                  </div>
+                  <div class="card-title-c align-self-center">
+                    <h5 class="title-c">{{property.harga|floatformat:-1}} {{property.Nominals}}</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="property-summary">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="title-box-d section-t4">
+                      <h3 class="title-d">Detail Property</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="summary-list">
+                  <ul class="list">
+                    <li class="d-flex justify-content-between">
+                      <strong>Property Status:</strong>
+                      <span>{{property.Category}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Lokasi:</strong>
+                      <span>{{property.alamat}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Property Type:</strong>
+                      <span>{{property.tipe}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Status:</strong>
+                      <span>{{property.status}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Luas:</strong>
+                      <span>{{property.luas}}m
+                        <sup>2</sup>
+                      </span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Luas Bangunan:</strong>
+                      <span>{{property.luas_bangunan}}m
+                        <sup>2</sup>
+                      </span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Kamar tidur:</strong>
+                      <span>{{property.k_tidur}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Kamar mandi:</strong>
+                      <span>{{property.k_mandi}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Garasi:</strong>
+                      <span>{{property.garasi}}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div id="fb-share-button">
+                    <svg viewBox="0 0 12 12" preserveAspectRatio="xMidYMid meet">
+                        <path class="svg-icon-path" d="M9.1,0.1V2H8C7.6,2,7.3,2.1,7.1,2.3C7,2.4,6.9,2.7,6.9,3v1.4H9L8.8,6.5H6.9V12H4.7V6.5H2.9V4.4h1.8V2.8 c0-0.9,0.3-1.6,0.7-2.1C6,0.2,6.6,0,7.5,0C8.2,0,8.7,0,9.1,0.1z"></path>
+                    </svg>
+                    <span>Share</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-7 col-lg-7 section-md-t3">
+              <div class="row">
+                <div class="col-sm-12">
+                     {% if property.deskripsi %}
+                  <div class="title-box-d">
+                    <h3 class="title-d">Deskripsi Property</h3>
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+              
+              <div class="property-description">
+                <p class="description color-text-a">
+                    <div align="center">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+             style="display:block; text-align:center;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
+             data-ad-client="ca-pub-3126995655051051"
+             data-ad-slot="1617673540"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        </div>
+                  {{property.deskripsi | safe}}
+                </p>
+              </div>
+              <div class="row section-t3">
+                <div class="col-sm-12">
+                  <div class="title-box-d">
+                    <h3 class="title-d">Fasilitas</h3>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="amenities-list color-text-a">
+                <ul class="list-a no-margin">
+                    {% for service in property.services.all  %}
+                    <li>{{ service.ameneties }}</li>
+                    {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-10 offset-md-1">
+          <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
+              {% if property.image360 %}
+              <li class="nav-item">
+              <a class="nav-link " id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab"
+                aria-controls="pills-video" aria-selected="true">Video</a>
+            </li>{% endif %}
+            {% if property.floor_plan %} 
+            <li class="nav-item">
+              <a class="nav-link active" id="pills-video-tab" data-toggle="pill" href="#pills-plans" role="tab" aria-controls="pills-plans"
+                aria-selected="true">Floor Plans</a>
+            </li>{% else %}
+            <li class="nav-item">
+              <a class="nav-link active" id="pills-video-tab" data-toggle="pill" href="#pills-plans" role="tab" aria-controls="pills-plans"
+                aria-selected="true">Floor Plans</a>
+            </li>
+            {% endif %}
+            {% if property.map_point %}
+            <li class="nav-item">
+              <a class="nav-link" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map"
+                aria-selected="false">Peta Lokasi</a>
+            </li> {% endif %}
+          </ul>
+          <div class="tab-content" id="pills-tabContent"> 
+            <div class="tab-pane fade" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
+              <iframe src="{{property.image360}}" width="100%" height="460" frameborder="0"
+                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+            {% if property.floor_plan %} 
+            <div class="tab-pane fade show active" id="pills-plans" role="tabpanel" aria-labelledby="pills-plans-tab">
+              <img  src={{property.floor_plan.url}} alt="" class="img-fluid">
+            </div>{% else %}
+            <div class="tab-pane fade show active" id="pills-plans" role="tabpanel" aria-labelledby="pills-plans-tab">
+              <img  src={% static "img/logweb.png" %} alt="" class="img-fluid">
+            </div>
+            {% endif %} 
+            <div class="tab-pane fade " id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+              <iframe src="{{property.map_point}}"
+                width="100%" height="460" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-12">
+          <div class="row section-t3">
+            <div class="col-sm-12">
+              <div class="title-box-d">
+                <h3 class="title-d">Contact Agent</h3>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-lg-4">
+              <img src={{property.agent.profile.foto_profile.url}} alt="" class="img-fluid">
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="property-agent">
+                <h4 class="title-agent">{{property.agent}}</h4>
+                <ul class="list-unstyled">
+                  <li class="d-flex justify-content-between">
+                    <strong>Phone:</strong>
+                    <span class="color-text-a"><a href="https://wa.me/{{property.agent.no_tlp}}?text=saya%20tertarik%20dengan%20{{property.nama}}">+{{property.agent.profile.no_tlp}}</a></span>
+                  </li>
+                  <li class="d-flex justify-content-between">
+                    <strong>Email:</strong>
+                    <span class="color-text-a">{{property.agent.profile.emails}}</span>
+                  </li>
+                </ul>
+                <form>
+                    <input type="button" class="btn btn-a" onclick="location.href='https://wa.me/{{property.agent.profile.no_tlp}}?text=saya%20tertarik%20dengan%20{{property.nama}}'" value="Send Message">
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Property Single End /-->
+
+  <!--/ footer Star /-->
+  {% include "snippets/footer.html" %}
+
+  
+  <script src={% static "js/fbshare.js" %}></script>
+{% include "snippets/script.html" %}
+</body>
+</html>

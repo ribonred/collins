@@ -1,0 +1,23 @@
+{% load crispy_forms_tags %}
+<form method="post" enctype="multipart/form-data" action="add">
+    {% csrf_token %}
+    {{ form.foto_utama|as_crispy_field }}
+    {{ form.nama|as_crispy_field }}
+    {{ form.alamat|as_crispy_field }}
+    {{ form.status|as_crispy_field }}
+    {{ form.tipe|as_crispy_field }}
+    {{ form.Category|as_crispy_field }}
+    {{ form.k_tidur|as_crispy_field }}
+    {{ form.k_mandi|as_crispy_field }}
+    {{ form.garasi|as_crispy_field }}
+    {{ form.luas|as_crispy_field }}
+    {{ form.luas_bangunan|as_crispy_field }}
+    {{ form.harga|as_crispy_field }}
+    {{ form.Nominals|as_crispy_field }}
+    {{ form.services|as_crispy_field }}
+{{form.terjual|as_crispy_field}}
+    <div class="modal-footer">
+      <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+      <input type="submit" class="btn btn-success" value="Simpan">
+    </div>
+  </form>

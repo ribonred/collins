@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+<div class="container">
+        <form method="POST" action="{% url 'csupdate' form.instance.pk %}" class="js-book-update-form" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form|crispy}}
+                <h3>Angsuran</h3>
+                <table class="table">
+                  {{ titles.management_form }}
+                
+                  {% for form in titles.forms %}
+                      {% if forloop.first %}
+                          <thead>
+                          <tr>
+                              {% for field in form.visible_fields %}
+                                  <th>{{ field.label|capfirst }}</th>
+                              {% endfor %}
+                          </tr>
+                          </thead>
+                      {% endif %}
+                      <tr class="formset_row">
+                          {% for field in form.visible_fields %}
+                              <td>
+                                  {# Include the hidden fields in the form #}
+                                  {% if forloop.first %}
+                                      {% for hidden in form.hidden_fields %}
+                                          {{ hidden }}
+                                      {% endfor %}
+                                  {% endif %}
+                                  {{ field.errors.as_ul }}
+                                  {{ field }}
+                              </td>
+                          {% endfor %}
+                      </tr>
+                  {% endfor %}
+              </table>
+              <h3>Proses pembangunan</h3>
+              <table class="table">
+                {{ pros.management_form }}
+                {% for form in pros.forms %}
+                    {% if forloop.first %}
+                        <thead>
+                        <tr>
+                            {% for field in form.visible_fields %}
+                                <th>{{ field.label|capfirst }}</th>
+                            {% endfor %}
+                        </tr>
+                        </thead>
+                    {% endif %}
+                    <tr class="formset_proses">
+                        {% for field in form.visible_fields %}
+                            <td>
+                                {# Include the hidden fields in the form #}
+                                {% if forloop.first %}
+                                    {% for hidden in form.hidden_fields %}
+                                        {{ hidden }}
+                                    {% endfor %}
+                                {% endif %}
+                                {{ field.errors.as_ul }}
+                                {{ field }}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %} 
+            </table>
+
+            <button type="button" class="btn btn-default" data-dismiss="modal"> <a href="{% url 'adminlist' %}">Close</a> </button>
+            <button type="submit" class="btn btn-primary" data-backdrop="false">Update</button>
+        </form>   
+        </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+  <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+
+  
+  <script>
+      $('#datepickers').datepicker({
+          uiLibrary: 'bootstrap4'
+      });
+      $('#prinsip').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+    $('#sp3k').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+    $('#persetujuan').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+    $('#realisasi').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+    $('#serahterima').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+    $('.angsur').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+    $('.bangun').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+  </script>
+{% endblock %}
+                <!-- <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title">Update CS</h4>
+                </div>
+                <div class="modal-body">
+                    {% for field in form %}
+                    <div class="form-group{% if field.errors %} has-error{% endif %}">
+                      <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                      {% render_field field class="form-control" %}
+                      {% for error in field.errors %}
+                        <p class="help-block">{{ error }}</p>
+                      {% endfor %}
+                  {% endfor %}
+                </div> -->

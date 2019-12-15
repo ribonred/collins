@@ -1,0 +1,97 @@
+{% load static %}
+<style>
+.imgs{
+  width:100%;
+}
+.home{
+  color: #ffffff;
+  height: 600px;
+  width: 100%;
+  margin-top: -600px;
+}
+.home .home-text{
+  top: 0;
+  left: 0;
+  width: 568px;
+  height: 650px;
+  border-radius: 0 50rem 50rem 0;
+}
+.home-text .text{
+  padding-top: 50px;
+  padding-left: 6rem;
+}
+@media only screen and (max-width: 769px) {
+  body{
+    overflow-x:hidden;
+  }
+  .imgs{
+    max-width: 700px;
+    min-width:400px;
+  }
+  .home{
+  color: white;
+  width: 100%;
+  margin-top: -425px;
+  height: 425px;
+}
+.home .home-text{
+  top: 0;
+  left: 0;
+  max-width: 385px;
+  height: 6px;
+  border-radius: 0 20rem 20rem 0;
+}
+.home-text .text{
+  padding-top: 185px;
+  padding-left: 1rem;
+}
+
+}
+</style>
+
+<picture>
+  <source media="(min-width: 769px)" srcset="{% static 'img/lifestyle.jpg' %}">
+  <source srcset="{% static 'img/logohomes.jpg' %}">
+  <img class="imgs" style=" margin-top: 100px;  background-color: black;  ">
+</picture>
+
+<div class="home">
+      <div class="home-text text-white">
+        <div class="container text">
+            <div class="who_we_left_content">
+              <div class="main_w_title">
+                  <h2 class="text-warning">Who <br class="title_br" /> We Are?</h2>
+                  <h5 class="text-white-50">Collins Property hadir di kota Malang untuk memberikan suasana baru di dunia property khusus nya di kota malang.
+                  </h5>
+              </div>
+            </div>
+        </div>  
+      </div>
+</div>
+<div class="rehomes-search-form-area wow fadeInUp" data-wow-delay="200ms" style="min-width:400px;">
+    <div class="container">
+        <div class="rehomes-search-form">
+            <form action="{% url 'list product' %}" method="GET">
+                <div class="row">
+                    <div class="col-12 col-lg-10">
+                        <div class="row">
+                        <div class="col-12 col-md-6 col-lg-3">
+                                <input type="text" placeholder="Search" name="alamat" class="form-control" aria-describedat="basic-addon2">
+                                </div>
+                        <div class="col-12 col-md-6 col-lg-3">
+                                <select name="nom" id="bathroom" class="form-control">
+                                    <option value="All" disabled selected>Filter Harga</option>
+                                    <option value="Jt"> < 1M</option>
+                                    <option value="M">> 1M</option>
+                                </select>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-2">
+                        <button type="submit" class="btn rehomes-search-btn">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

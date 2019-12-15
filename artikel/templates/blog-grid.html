@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'snippets/bootstrap.html' %}
+   
+
+  <!-- =======================================================
+    Theme Name: EstateAgency
+    Theme URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+
+ {% include 'snippets/navbar/navbarproject.html' %}
+   
+  <!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">Berita Terbaru</h1>
+            <span class="color-text-a">Developer</span>
+            
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page"><a href="/artikelpengembangan">list Pengembangan</a>
+                
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+
+  <!--/ News Grid Star /-->
+  <section class="news-grid grid">
+    <div class="container">
+      <div class="row">
+          <div id="deleteartikel" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                    
+                  
+                </div>
+              </div>
+              </div>
+        
+        {% for artikel in pengembangan_list  %}
+            <div class="col-md-3 d-flex ftco-animate fadeInUp ftco-animated">
+                <div class="blog-entry align-self-stretch">
+                  <a href="detail/{{artikel.slug}}" class="block-20" style="background-image: url('{{artikel.thumbnail.url}}');">
+                  </a>
+                  <div class="text mt-3 d-block">
+                    <h3 class="heading mt-3"><a href="detail/{{artikel.slug}}">{{artikel.judul}}</a></h3>
+                    <div class="meta mb-3">
+                      <div><a href="detail/{{artikel.slug}}">{{artikel.published}}</a></div>
+                      <div>{{artikel.author.username}}</div>
+                      {% if user.is_authenticated %}
+              <div><a href="{% url 'updateartikel' artikel.id %}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">UPDATE</a>
+                  <a href="#deleteartikel" data-href="{% url 'deleteartikel' artikel.id %}" class="delete btn btn-danger btn-sm active" role="button" aria-pressed="true" data-toggle="modal">DELETE</a>
+                </div>
+                      {% endif %}
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-12">
+            {% if is_paginated %}
+            <nav class="pagination-a">
+              <ul class="pagination justify-content-end">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{page_obj.previous_page_number}}" tabindex="-1">
+                    <span class="ion-ios-arrow-back"> PREV</span>
+                  </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">
+                      <span class="ion-ios-arrow-back"> PREV</span>
+                    </a>
+                  </li>
+                {% endif %}
+                
+                {% for i in paginator.page_range  %}
+                {% if i is page_obj.number %}
+                <li class="page-item active ">
+                    <a class="page-link" href="?page={{i}}">{{i}}</a>
+                  </li>
+                  {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{i}}">{{i}}</a>
+                  </li>
+                {% endif %}
+                
+                {% endfor %}
+                {% if page_obj.has_next %}
+                <li class="page-item next">
+                  <a class="page-link" href="?page={{page_obj.next_page_number}}">
+                    <span class="ion-ios-arrow-forward">NEXT</span>
+                  </a>
+                </li>
+                {% else %}
+                <li class="page-item next disabled">
+                    <a class="page-link" href="#">
+                      <span class="ion-ios-arrow-forward">NEXT</span>
+                    </a>
+                  </li>            
+                {% endif %}
+              </ul>
+            </nav>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+  </section>
+  <!--/ News Grid End /-->
+
+  <!--/ footer Star /-->
+ {% include 'snippets/footer.html' %}
+  <!--/ Footer End /-->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <div id="preloader"></div>
+
+  {% include 'snippets/script.html' %}
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.delete').click(function(e) {
+        e.preventDefault();
+        var url = $(this).attr('data-href');
+        $('.modal-content').load(url);
+      });
+    });
+  </script>
+
+</body>
+</html>

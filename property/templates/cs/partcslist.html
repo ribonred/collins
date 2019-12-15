@@ -1,0 +1,19 @@
+{% for cs in customer %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{cs.nama}}</td>
+            <td>{{cs.No_id}}</td>
+            <td>{{cs.Notlp}}</td>
+            <td>{{cs.alamat}}</td>
+            <td>
+              <a  href="{% url 'csupdate' cs.pk %}" class="btn btn-warning">
+                <span class="glyphicon glyphicon-pencil"></span>Update
+              </a>
+            </td>
+            <td>
+                <a  href="#modal-cs" class="btn btn-danger btn-sm js-delete-book" data-url="{% url 'csdelete' cs.pk %}" id="abc" data-toggle="modal">
+                        <span class="glyphicon glyphicon-trash"></span>Delete
+                        </a>
+            </td>
+          </tr>
+          {% endfor %}

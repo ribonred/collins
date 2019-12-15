@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta property="og:title" content="{{pengembangan.judul}}">
+<meta property="og:site_name" content="www.collins-property.com">
+<meta property="og:url" content="{{request.build_absolute_uri}}">
+<meta property="og:description" content="collins blog">
+<meta property="og:type" content="article">
+<meta property="og:image" content="http://collins-property.com{{pengembangan.thumbnail.url}}">
+<meta name="fb:app_id" content="399292814048927">
+{% include "snippets/bootstrap.html" %}
+</head>
+
+<body>
+  {% include 'snippets/navbar/navbarproject.html' %}
+  <!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">{{pengembangan.judul}}</h1>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                About
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+
+  <!--/ About Star /-->
+  <section class="section-about">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 section-t8">
+        <div align="center">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+             style="display:block; text-align:center;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
+             data-ad-client="ca-pub-3126995655051051"
+             data-ad-slot="1617673540"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        </div>
+                {{pengembangan.isi2 | safe}}
+                <div id="fb-share-button" align="center">
+                    <svg viewBox="0 0 12 12" preserveAspectRatio="xMidYMid meet">
+                        <path class="svg-icon-path" d="M9.1,0.1V2H8C7.6,2,7.3,2.1,7.1,2.3C7,2.4,6.9,2.7,6.9,3v1.4H9L8.8,6.5H6.9V12H4.7V6.5H2.9V4.4h1.8V2.8 c0-0.9,0.3-1.6,0.7-2.1C6,0.2,6.6,0,7.5,0C8.2,0,8.7,0,9.1,0.1z"></path>
+                    </svg>
+                    <span>Share</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  <!--/ About End /-->
+  <div class="post-information">
+      <ul class="list-inline text-center color-a">
+        <li class="list-inline-item mr-2">
+          <strong>Author: </strong>
+          <span class="color-text-a">{{pengembangan.author.username}}</span>
+        </li>
+        <li class="list-inline-item mr-2">
+          <strong>Category: </strong>
+          <span class="color-text-a">{{pengembangan.kategori}}</span>
+        </li>
+        <li class="list-inline-item">
+          <strong>Date: </strong>
+          <span class="color-text-a">{{pengembangan.published}}</span>
+        </li>
+      </ul>
+    </div>
+   <div align="center">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+             style="display:block; text-align:center;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
+             data-ad-client="ca-pub-3126995655051051"
+             data-ad-slot="1617673540"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        </div>
+
+  <!--/ footer Star /-->
+ {% include "snippets/footer.html" %}
+  <!--/ Footer End /-->
+  <!-- JavaScript Libraries -->
+  {% include 'snippets/script.html' %}
+  <script src={% static "js/fbshare.js" %}></script>
+
+</body>
+</html>
