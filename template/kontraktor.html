@@ -441,13 +441,13 @@ background: #bbb;
                             </div>
                           </div>
                         </div>
-                      <div class="form-wizard-step {% if a.uang_muka %} active {% endif %}">
-                          <div class="form-wizard-step-icon"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i>{% if a.uang_muka %}<i class="fas fa-check" style="position: absolute; top: -10px; right: -100px; font-size: 3em; color: green;"></i>{% endif %}</div>
+                      <div class="form-wizard-step {% if a.uang_muka.count > 0 %} active {% endif %}">
+                          <div class="form-wizard-step-icon"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i>{% if a.uang_muka.count > 0 %}<i class="fas fa-check" style="position: absolute; top: -10px; right: -100px; font-size: 3em; color: green;"></i>{% endif %}</div>
                           <p><button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsetwo" aria-expanded="true" aria-controls="collapseOne">
                               Uang muka dan Angsuran
                             </button></p>
                         </div>
-                        <div id="collapsetwo" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div id="{% if a.uang_muka.count > 0 %} collapsetwo{% endif %}" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
                           
                               <table style="margin: 0px auto; width:100%; font-size: 16px;">
                                   <thead>
@@ -479,34 +479,35 @@ background: #bbb;
                         </div>
                         <div id="collapse3" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">
-                              <div class="row">
-                                  <div class="col">
+                              <div class="row" style="display: flex;">
+                                  <div class="col-xl-3">
                                       <button type="button" class="btn {% if a.data_ktp_suami %} btn-success {% else %} btn-secondary {% endif %}">KTP Suami</button>
                                   </div>
-                                <div class="col">
+                                <div class="col-xl-3">
                                     <button type="button" class="btn {% if a.data_ktp_istri %} btn-success {% else %} btn-secondary {% endif %}">KTP istri</button>
+                      
                                 </div>
-                                <div class="col">
-                                    <button type="button" class="btn {% if a.data_kk %} btn-success {% else %} btn-secondary {% endif %}">Kartu keluarga</button>
-                                    
+                                <div class="col-xl-3">
+                                  <button type="button" class="btn {% if a.data_kk %} btn-success {% else %} btn-secondary {% endif %}">Kartu keluarga</button>
+                                  
+                              </div>
+                              <div class="col-xl-3">
+                                  <button type="button" class="btn {% if a.data_surat_nikah %} btn-success {% else %} btn-secondary {% endif %}">Surat Nikah</button>
                                 </div>
-                                <div class="col">
-                                    <button type="button" class="btn {% if a.data_surat_nikah %} btn-success {% else %} btn-secondary {% endif %}">Surat Nikah</button>
-                                  </div>
                               </div>
                             </div>
-                            <div class="row">
-                                <div class="col">
+                            <div class="row" style="display: flex;">
+                                <div class="col-xl-3">
                                     <button type="button" class="btn {% if a.data_npwp %} btn-success {% else %} btn-secondary {% endif %}">NPWP</button>
                                 </div>
-                              <div class="col">
+                              <div class="col-xl-3">
                                   <button type="button" class="btn {% if a.data_rek %} btn-success {% else %} btn-secondary {% endif %}">REKENING</button>
                               </div>
-                              <div class="col">
+                              <div class="col-xl-3">
                                   <button type="button" class="btn {% if a.data_slip_gaji %} btn-success {% else %} btn-secondary {% endif %}">Slip Gaji</button>
                                   
                               </div>
-                              <div class="col">
+                              <div class="col-xl-3">
                                   <button type="button" class="btn {% if a.data_ket_kerja %} btn-success {% else %} btn-secondary {% endif %}">Keterangan Kerja</button>
                                 </div>
                             </div>
@@ -539,13 +540,13 @@ background: #bbb;
                               </div>
                             </div>
                           </div>
-                      <div class="form-wizard-step {% if a.prosesbangun %} active {% endif %}">
-                          <div class="form-wizard-step-icon"><i class="fas fa-hard-hat" aria-hidden="true"></i>{% if a.prosesbangun %}<i class="fas fa-check" style="position: absolute; top: -10px; right: -100px; font-size: 3em; color: green;"></i>{% endif %}</div>
+                      <div class="form-wizard-step {% if a.prosesbangun > 0 %} active {% endif %}">
+                          <div class="form-wizard-step-icon"><i class="fas fa-hard-hat" aria-hidden="true"></i>{% if a.prosesbangun > 0 %}<i class="fas fa-check" style="position: absolute; top: -10px; right: -100px; font-size: 3em; color: green;"></i>{% endif %}</div>
                           <p><button class="btn btn-outline-warning" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
                               Proses Bangun
                             </button></p>
                         </div>
-                        <div id="collapse5" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div id="{% if a.prosesbangun > 0 %} collapse5 {% endif %}" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
                           <div class="container">
                             {% for proses in a.prosesbangun.all  %}
                             <div class="row">
@@ -568,11 +569,11 @@ background: #bbb;
                               Realisasi
                             </button></p>
                         </div>
-                        <div id="collapse6" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div id="{% if a.tgl_realisasi %}collapse6{% endif %}" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="container">
                               <div class="row">
                                 <div class="col">
-                                  <p>Di realisasikan pada Tanggal : </p>
+                                  <p>Realisasi Tanggal : </p>
                                 </div>
                                 <div class="col">
                                     <p>{{a.tgl_realisasi}}</p>
@@ -589,7 +590,7 @@ background: #bbb;
                               Serah terima
                             </button></p>
                         </div>
-                        <div id="collapse7" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div id="{% if a.tgl_serah_terima %}collapse7{% endif %}" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="container">
                               <div class="row">
                                 <div class="col">

@@ -50,9 +50,11 @@
 </style>
 
 <picture>
-  <source media="(min-width: 769px)" srcset="{% static 'img/lifestyle.jpg' %}">
-  <source srcset="{% static 'img/logohomes.jpg' %}">
+{% for img in fpage %} 
+  <source media="(min-width: 769px)" srcset="{% if img.banner_pc %} {{img.banner_pc.url}}{% else %} {% static 'img/lifestyle.jpg' %}{% endif %}">
+  <source srcset="{% if img.banner_mobile %} {{img.banner_mobile.url}}{% else %}{% static 'img/logohomes.jpg' %}{% endif %}">
   <img class="imgs" style=" margin-top: 100px;  background-color: black;  ">
+  {% endfor %}
 </picture>
 
 <div class="home">

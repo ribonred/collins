@@ -8,7 +8,8 @@ class imagePromo(models.Model):
         ('/product/detail/grand-amelia', 'amelia'),
         ('/product/detail/garden-asri', 'garden asri'),
         ('/product/detail/garden-cluster-kepanjen', 'Garden Cluster'),
-        ('/product/detail/puri-taman-agung', 'PTA')
+        ('/product/detail/puri-taman-agung', 'PTA'),
+        ('/product/detail/sativa-at-malang', 'SATIVA')
         )
     Nama_promo = models.CharField(max_length=120,blank=False)
     Image_promo = models.ImageField(upload_to="promosi", 
@@ -28,5 +29,15 @@ class promosi(models.Model):
     updated = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return "{}".format(self.updated)
+
+
+class ImageFrontpage(models.Model):
+    settings_profile = models.CharField(max_length = 20,null=True, blank=True)
+    banner_pc = models.ImageField(null=True,blank=True, upload_to='media')
+    banner_mobile = models.ImageField(null=True,blank=True, upload_to='media')
+    banner_midle = models.ImageField(null=True,blank=True, upload_to='media')
+
+    def __str__(self):
+        return self.settings_profile
 
 

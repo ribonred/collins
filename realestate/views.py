@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from property.models import property, Customer
 from django.views.generic import ListView,TemplateView,DetailView
-from marketing.models import imagePromo,promosi
+from marketing.models import imagePromo,promosi,ImageFrontpage
 from artikel.models import pengembangan
 from django.db.models import Q
 from django.core.paginator import Paginator
@@ -21,6 +21,7 @@ class indexListView(ListView):
         p2 = Paginator(pengembangan.objects.select_related().all().order_by('-published'), self.paginate_artikel_by)
         context['prom'] = p.page(context['page_obj'].number)
         context['article'] = p2.page(context['page_obj'].number)
+        context['fpage'] = ImageFrontpage.objects.all()
         return context
 class contactTemplateView(TemplateView):
     template_name = 'contact.html'

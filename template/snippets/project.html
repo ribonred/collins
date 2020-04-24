@@ -19,7 +19,9 @@
   </div>
   <div class="chose_video_right">
     <div class="chose_video_inner">
-      <img src="{% static "img/TAMPAK 54 atau 50.jpeg" %}" alt="">
+      {% for img in fpage %} 
+      <img src="{% if img.banner_midle %} {{img.banner_midle.url}}{% else %}{% static 'img/TAMPAK 54 atau 50.jpeg' %}{% endif %}" alt="">
+      {% endfor %}
     </div>
   </div>
 </section>
