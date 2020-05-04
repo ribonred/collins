@@ -409,7 +409,11 @@ background: #bbb;
                         <form role="form" action="" method="post">
           
                           <h3>User: {{a.nama}}</h3>
-                          <h3>User: {{a.proyek}}</h3>
+                        {% if a.proyek %}
+                        <h3>Project: {{a.proyek}}</h3>
+                        {% else %}
+                        <h3>Project: belum terupdate</h3>
+                        {% endif %}
                           <p>No. ID: {{a.No_id}}</p>
                           <p>Alamat: {{a.alamat}}</p>  
                 <!-- Form progress -->
