@@ -540,13 +540,13 @@ background: #bbb;
                               </div>
                             </div>
                           </div>
-                      <div class="form-wizard-step {% if a.prosesbangun  %}active{% endif %}">
-                          <div class="form-wizard-step-icon"><i class="fas fa-hard-hat" aria-hidden="true"></i>{% if a.prosesbangun %}<i class="fas fa-check" style="position: absolute; top: -10px; right: -100px; font-size: 3em; color: green;"></i>{% endif %}</div>
+                      <div class="form-wizard-step {% if a.prosesbangun.count > 0 %}active{% endif %}">
+                          <div class="form-wizard-step-icon"><i class="fas fa-hard-hat" aria-hidden="true"></i>{% if a.prosesbangun.count > 0 %}<i class="fas fa-check" style="position: absolute; top: -10px; right: -100px; font-size: 3em; color: green;"></i>{% endif %}</div>
                           <p><button class="btn btn-outline-warning" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5">
                               Proses Bangun
                             </button></p>
                         </div>
-                        <div id="{% if a.prosesbangun %}collapse5{% endif %}" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div id="{% if a.prosesbangun.count > 0 %}collapse5{% endif %}" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
                           <div class="container">
                             {% for proses in a.prosesbangun.all  %}
                             <div class="row">
