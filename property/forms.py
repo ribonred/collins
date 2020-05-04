@@ -67,6 +67,9 @@ class prosesbangunform(forms.ModelForm):
     class Meta:
         model = ProsesBangun
         exclude = ()
+        widgets = {
+            'tgl': DateInput()
+        }
 
 
 

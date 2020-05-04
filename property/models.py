@@ -50,11 +50,11 @@ class Customer(models.Model):
 class uangmuka(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='uang_muka')
     jumlah = models.DecimalField(decimal_places=0,max_digits=30, blank=True, null=True)
-    keterangan = models.CharField(max_length=255)
+    keterangan = models.CharField(max_length=255, blank=True, null=True)
     tgl_byr = models.DateField(blank=True, null=True)
 class ProsesBangun(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='prosesbangun')
-    keterangan = models.CharField(max_length=255)
+    keterangan = models.CharField(max_length=255, blank=True, null=True)
     foto = models.ImageField(upload_to='data user', blank=True, null=True)
     tgl = models.DateField(blank=True, null=True)
 class ameneties(models.Model):
