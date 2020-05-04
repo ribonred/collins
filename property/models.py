@@ -18,6 +18,7 @@ class Customer(models.Model):
     )
     user                            = models.ForeignKey(User, on_delete=models.CASCADE)
     nama                            = models.CharField(max_length=200)
+    proyek                          = models.CharField(max_length=200, null=True, blank=True)
     alamat                          = models.CharField(max_length=200)
     kirim_notifikasi                = models.BooleanField(default=False)
     Notlp                           = models.DecimalField(max_digits=12, decimal_places=0)
