@@ -3,6 +3,12 @@ from .models import property, Customer,uangmuka,ProsesBangun
 from django.forms import CheckboxSelectMultiple,widgets
 from django.forms.models import inlineformset_factory
 
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
+
 class proper(forms.ModelForm): 
     class Meta:
         model = property
@@ -53,6 +59,9 @@ class UangMuka(forms.ModelForm):
     class Meta:
         model = uangmuka
         exclude = ()
+        widgets = {
+            'tgl_byr': DateInput()
+        }
 
 class prosesbangunform(forms.ModelForm):
     class Meta:
